@@ -62,12 +62,17 @@ class SimpleStateMachine extends ConsumerWidget {
     print(
         '${riverLevelCurrent.locationName} - ${riverLevelCurrent.measureInM}');
 
-    return RiveAnimation.asset('assets/rive/canal.riv', fit: BoxFit.cover,
-        onInit: (artboard) {
-      ref.read(simpleStateMachineProvider.notifier).onRiveInit(
-            artboard,
-            riverLevelCurrent,
-          );
-    }, animations: const ['Idle']);
+    return RiveAnimation.asset(
+      'assets/rive/canal.riv',
+      fit: BoxFit.cover,
+      onInit: (artboard) {
+        ref.read(simpleStateMachineProvider.notifier).onRiveInit(
+              artboard,
+              riverLevelCurrent,
+            );
+      },
+      animations: const ['Idle'],
+      stateMachines: ['State Machine'],
+    );
   }
 }
